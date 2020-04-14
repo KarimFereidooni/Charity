@@ -12,6 +12,7 @@ import LoginRegister from "@/pages/LoginRegister.vue";
 import ViewProfile from "@/pages/ViewProfile.vue";
 import PayResult from "@/pages/PayResult.vue";
 import Users from "@/pages/AdminPanel/Users.vue";
+import Payments from "@/pages/CharityPanel/Payments.vue";
 
 function lazyLoadView(AsyncView) {
   const AsyncHandler = () => ({
@@ -140,6 +141,16 @@ export const routes = [
       roles: ["Admin"]
     },
     component: Users
+  },
+  {
+    path: "/payments",
+    name: "payments",
+    meta: {
+      title: "پرداختی ها",
+      authorize: true,
+      roles: ["Admin", "Charity"]
+    },
+    component: Payments
   },
   {
     path: "*",

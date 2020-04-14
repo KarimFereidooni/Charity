@@ -98,7 +98,7 @@ namespace Charity.Controllers
             {
                 this.antiforgery.GetAndStoreTokens(this.HttpContext);
                 user.LastLoginDateTime = user.LoginDateTime;
-                user.LoginDateTime = DateTimeOffset.Now;
+                user.LoginDateTime = DateTime.Now;
                 await this.context.SaveChangesAsync();
                 return this.Json(new ProfileViewModel(user, true, this.GetUserRoles(user), string.Empty));
             }
@@ -203,7 +203,7 @@ namespace Charity.Controllers
             Models.DataModels.UserModels.User user;
             using (var transaction = this.context.Database.BeginTransaction())
             {
-                var newUser = new Models.DataModels.UserModels.User(0, model.Email, false, model.UserName, model.PhoneNumber, false, model.Title, model.Name, model.Surname, null, null, null, null, null, null, null, null, DateTimeOffset.Now, null, DateTimeOffset.Now, null, Guid.NewGuid().ToString(), false, null, null, null, null, null);
+                var newUser = new Models.DataModels.UserModels.User(0, model.Email, false, model.UserName, model.PhoneNumber, false, model.Title, model.Name, model.Surname, null, null, null, null, null, null, null, null, DateTime.Now, null, DateTime.Now, null, Guid.NewGuid().ToString(), false, null, null, null, null, null);
                 IdentityResult createResult = await this.userManager.CreateAsync(newUser);
                 if (!createResult.Succeeded)
                 {
@@ -267,7 +267,7 @@ namespace Charity.Controllers
 
             var user = await this.userManager.GetUserAsync(this.User);
             user.Avatar = "data:image/png;base64," + base64String;
-            user.LastUpdateDateTime = DateTimeOffset.Now;
+            user.LastUpdateDateTime = DateTime.Now;
             await this.context.SaveChangesAsync();
             return this.Json(new ProfileViewModel(user, true, this.GetUserRoles(user), string.Empty));
         }
@@ -281,7 +281,7 @@ namespace Charity.Controllers
                 model.Name = model.UserName;
             }
 
-            Models.DataModels.UserModels.User newUser = new Models.DataModels.UserModels.User(user.Id, model.Email, user.EmailConfirmed, model.UserName, model.PhoneNumber, user.PhoneNumberConfirmed, model.Title, model.Name, model.Surname, model.Avatar, model.NationCode, model.IdNumber, model.HomePhoneNumber, model.WorkPhoneNumber, model.Fax, model.Address, model.PostalCode, user.RegisterDateTime, user.LastLoginDateTime, user.LoginDateTime, DateTimeOffset.Now, user.ChatId, user.Disabled, model.IDPayLink, model.BankName, model.BankAccountNumber, model.BankCard, model.BankIBAN);
+            Models.DataModels.UserModels.User newUser = new Models.DataModels.UserModels.User(user.Id, model.Email, user.EmailConfirmed, model.UserName, model.PhoneNumber, user.PhoneNumberConfirmed, model.Title, model.Name, model.Surname, model.Avatar, model.NationCode, model.IdNumber, model.HomePhoneNumber, model.WorkPhoneNumber, model.Fax, model.Address, model.PostalCode, user.RegisterDateTime, user.LastLoginDateTime, user.LoginDateTime, DateTime.Now, user.ChatId, user.Disabled, model.IDPayLink, model.BankName, model.BankAccountNumber, model.BankCard, model.BankIBAN);
             Models.DataModels.UserModels.User.Copy(newUser, user);
             await this.context.SaveChangesAsync();
             return this.Json(new ProfileViewModel(user, true, this.GetUserRoles(user), string.Empty));
@@ -347,7 +347,7 @@ namespace Charity.Controllers
                         select new
                         {
                             x.Id,
-                            x.FullName,
+                            FullName = x.Name + " " + x.Surname,
                             x.UserName,
                             x.Avatar,
                             Roles = roles,
@@ -378,7 +378,7 @@ namespace Charity.Controllers
 
             if (!string.IsNullOrEmpty(fullName))
             {
-                query = query.Where(x => x.FullName.Contains(fullName));
+                query = query.Where(x => x.Name.Contains(fullName) || x.Surname.Contains(fullName));
             }
 
             if (model.SortDesc[0])
@@ -405,7 +405,7 @@ namespace Charity.Controllers
                 Data = await dataQuery.Select(x => new
                 {
                     x.Id,
-                    x.FullName,
+                    FullName = x.Name + " " + x.Surname,
                     x.UserName,
                     x.Email,
                     x.PhoneNumber,

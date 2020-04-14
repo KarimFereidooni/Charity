@@ -108,7 +108,7 @@ namespace Charity.Extensions
                 //-- با توجه به این که تاریخ فعلی (فقط روز فعلی، زمان نباید اضافه شود) موقع رمزنگاری به کلید رمزنگاری اضافه گردید
                 //-- باز هم تاریخ فعلی (فقط روز فعلی، زمان نباید اضافه شود) به کلید
                 //-- رمزگشایی اضافه گردیده است
-                decryptedString = httpCookie.Decrypt(DecryptionKey + DateTimeOffset.Now.Date.ToString());
+                decryptedString = httpCookie.Decrypt(DecryptionKey + DateTime.Now.Date.ToString());
             }
             catch (System.Security.Cryptography.CryptographicException)
             {
@@ -127,7 +127,7 @@ namespace Charity.Extensions
             string generatedCaptchaDateTime = arr[1];
 
             if (string.IsNullOrEmpty(originalCaptchaNumber) || string.IsNullOrEmpty(generatedCaptchaDateTime) || !int.TryParse(originalCaptchaNumber, out int num) ||
-                !DateTimeOffset.TryParse(generatedCaptchaDateTime, out DateTimeOffset dt))
+                !DateTime.TryParse(generatedCaptchaDateTime, out DateTime dt))
             {
                 //-- اطلاعات رمزگشایی شده معتبر نیستند
 
@@ -139,7 +139,7 @@ namespace Charity.Extensions
 
             //-- به دست آوردن اختلاف زمانی بر حسب ثانیه، بین موقعی که تصویر امنیتی ایجاد شد و زمان فعلی که کاربر
             //-- جواب معادله را وارد کرده و فرم را پست کرده است
-            double secondsDiff = (DateTimeOffset.Now - DateTimeOffset.Parse(generatedCaptchaDateTime)).TotalSeconds;
+            double secondsDiff = (DateTime.Now - DateTime.Parse(generatedCaptchaDateTime)).TotalSeconds;
 
             //-- منقضی شدن زمان جواب معادله -- پیش فرض 30 ثانیه
             if (secondsDiff > this.ExpireTimeCaptchaCodeBySeconds)

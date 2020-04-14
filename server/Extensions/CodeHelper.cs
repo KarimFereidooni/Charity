@@ -15,7 +15,7 @@ namespace Charity.Extensions
             lock (LockObject)
             {
                 System.Threading.Thread.Sleep(1);
-                long code = (long)DateTimeOffset.UtcNow.Subtract(new DateTime(2018, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
+                long code = (long)DateTime.UtcNow.Subtract(new DateTime(2018, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
                 if (code <= 0)
                 {
                     throw new Exception("تاریخ سیستم نامعتبر است");
@@ -36,7 +36,7 @@ namespace Charity.Extensions
             lock (LockObject)
             {
                 System.Threading.Thread.Sleep(1000);
-                long code = (long)DateTimeOffset.UtcNow.Subtract(new DateTime(2018, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+                long code = (long)DateTime.UtcNow.Subtract(new DateTime(2018, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
                 if (code <= 0)
                 {
                     throw new Exception("تاریخ سیستم نامعتبر است");

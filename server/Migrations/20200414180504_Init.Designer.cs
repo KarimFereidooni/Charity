@@ -4,84 +4,20 @@ using Charity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Charity.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200414180504_Init")]
+    partial class Init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.2");
-
-            modelBuilder.Entity("Charity.Models.DataModels.Charity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Location")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Charities");
-                });
-
-            modelBuilder.Entity("Charity.Models.DataModels.CharityTag", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CharityId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Tag")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CharityId");
-
-                    b.ToTable("CharityTags");
-                });
-
-            modelBuilder.Entity("Charity.Models.DataModels.Payment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<long>("Amount")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CharityId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Desceiption")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("PaymentDateTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CharityId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Payments");
-                });
 
             modelBuilder.Entity("Charity.Models.DataModels.UserModels.User", b =>
                 {
@@ -375,30 +311,6 @@ namespace Charity.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("UserToken");
-                });
-
-            modelBuilder.Entity("Charity.Models.DataModels.CharityTag", b =>
-                {
-                    b.HasOne("Charity.Models.DataModels.Charity", "Charity")
-                        .WithMany("Tags")
-                        .HasForeignKey("CharityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Charity.Models.DataModels.Payment", b =>
-                {
-                    b.HasOne("Charity.Models.DataModels.Charity", "Charity")
-                        .WithMany()
-                        .HasForeignKey("CharityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Charity.Models.DataModels.UserModels.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Charity.Models.DataModels.UserModels.UserClaim", b =>

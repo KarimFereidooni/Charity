@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <PaymentForm />
-  </div>
+  <PaymentForm />
 </template>
 
 <script lang="ts">
@@ -14,3 +12,4 @@ export default Vue.extend({
   }
 });
 </script>
+

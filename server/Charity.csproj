@@ -31,10 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="renderOnServer.js" CopyToPublishDirectory="PreserveNewest" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Models\Enums\" />
     <Folder Include="Models\Response\" />
     <Folder Include="Services\" />

@@ -71,7 +71,7 @@ namespace Charity.Extensions
 
             //-- تاریخ فعلی (فقط روز فعلی) باید به کلید رمزنگاری اطلاعات اضافه شود
             //-- این کار به این هدف متفاوت بودن کلید رمزنگاری اطلاعات در هر روز صورت گرفته است
-            string encryptionSaltKey = EncryptionKey + DateTimeOffset.Now.Date.ToString();
+            string encryptionSaltKey = EncryptionKey + DateTime.Now.Date.ToString();
 
             //-- چسباندن عدد اتفاقی تولید شده به تاریخ و زمان فعلی با یک جدا کننده
             //-- توضیح: تاریخ و زمان فعلی باید در کورکی ذخیره شود تا هنگام رمزگشایی
@@ -80,7 +80,7 @@ namespace Charity.Extensions
             Random random = new Random();
             int a = random.Next(10, 90);
             int b = random.Next(1, 9);
-            string plainText = (a + b).ToString() + "," + DateTimeOffset.Now.ToString();
+            string plainText = (a + b).ToString() + "," + DateTime.Now.ToString();
 
             //-- رمزنگاری مقدار متغیر بالا جهت ذخیره در کوکی
             string encryptedValue = plainText.Encrypt(encryptionSaltKey);

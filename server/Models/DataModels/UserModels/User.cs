@@ -13,10 +13,10 @@ namespace Charity.Models.DataModels.UserModels
         {
             this.Roles = new HashSet<UserInRole>();
             this.UserClaims = new HashSet<UserClaim>();
-            this.RegisterDateTime = DateTimeOffset.Now;
+            this.RegisterDateTime = DateTime.Now;
         }
 
-        public User(int id, string email, bool emailConfirmed, string userName, string phoneNumber, bool phoneNumberConfirmed, string title, string name, string surname, string avatar, string nationCode, string idNumber, string homePhoneNumber, string workPhoneNumber, string fax, string address, string postalCode, DateTimeOffset registerDateTime, DateTimeOffset? lastLoginDateTime, DateTimeOffset? loginDateTime, DateTimeOffset? lastUpdateDateTime, string chatId, bool disabled, string iDPayLink, string bankName, string bankAccountNumber, string bankCard, string bankIBAN)
+        public User(int id, string email, bool emailConfirmed, string userName, string phoneNumber, bool phoneNumberConfirmed, string title, string name, string surname, string avatar, string nationCode, string idNumber, string homePhoneNumber, string workPhoneNumber, string fax, string address, string postalCode, DateTime registerDateTime, DateTime? lastLoginDateTime, DateTime? loginDateTime, DateTime? lastUpdateDateTime, string chatId, bool disabled, string iDPayLink, string bankName, string bankAccountNumber, string bankCard, string bankIBAN)
         {
             this.Id = id;
             this.Email = email;
@@ -120,12 +120,6 @@ namespace Charity.Models.DataModels.UserModels
         public override bool LockoutEnabled { get => base.LockoutEnabled; set => base.LockoutEnabled = value; }
 
         /// <summary>
-        /// مدت زمان قفل شدن حساب کاربر.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public override DateTimeOffset? LockoutEnd { get => base.LockoutEnd; set => base.LockoutEnd = value; }
-
-        /// <summary>
         /// ورود دو مرحله ای فعال است.
         /// </summary>
         [Newtonsoft.Json.JsonIgnore]
@@ -191,22 +185,22 @@ namespace Charity.Models.DataModels.UserModels
         /// <summary>
         /// تاریخ و ساعت ثبت.
         /// </summary>
-        public DateTimeOffset RegisterDateTime { get; set; }
+        public DateTime RegisterDateTime { get; set; }
 
         /// <summary>
         /// تاریخ و ساعت آخرین ورود.
         /// </summary>
-        public DateTimeOffset? LastLoginDateTime { get; set; }
+        public DateTime? LastLoginDateTime { get; set; }
 
         /// <summary>
         /// تاریخ و ساعت ورود.
         /// </summary>
-        public DateTimeOffset? LoginDateTime { get; set; }
+        public DateTime? LoginDateTime { get; set; }
 
         /// <summary>
         /// تاریخ و ساعت آخرین ویرایش.
         /// </summary>
-        public DateTimeOffset? LastUpdateDateTime { get; set; }
+        public DateTime? LastUpdateDateTime { get; set; }
 
         /// <summary>
         /// شناسه کاربر در سیستم چت انلاین.

@@ -10,14 +10,80 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Charity.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200413193857_Init")]
-    partial class Init
+    [Migration("20200414182002_Entities")]
+    partial class Entities
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.2");
+
+            modelBuilder.Entity("Charity.Models.DataModels.Charity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Charities");
+                });
+
+            modelBuilder.Entity("Charity.Models.DataModels.CharityTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CharityId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Tag")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CharityId");
+
+                    b.ToTable("CharityTags");
+                });
+
+            modelBuilder.Entity("Charity.Models.DataModels.Payment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<long>("Amount")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CharityId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Desceiption")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("PaymentDateTime")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CharityId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Payments");
+                });
 
             modelBuilder.Entity("Charity.Models.DataModels.UserModels.User", b =>
                 {
@@ -83,10 +149,10 @@ namespace Charity.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.Property<DateTimeOffset?>("LastLoginDateTime")
+                    b.Property<DateTime?>("LastLoginDateTime")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset?>("LastUpdateDateTime")
+                    b.Property<DateTime?>("LastUpdateDateTime")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
@@ -95,7 +161,7 @@ namespace Charity.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset?>("LoginDateTime")
+                    b.Property<DateTime?>("LoginDateTime")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
@@ -129,7 +195,7 @@ namespace Charity.Migrations
                         .HasColumnType("TEXT")
                         .HasMaxLength(50);
 
-                    b.Property<DateTimeOffset>("RegisterDateTime")
+                    b.Property<DateTime>("RegisterDateTime")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("SecurityStamp")
@@ -311,6 +377,30 @@ namespace Charity.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("UserToken");
+                });
+
+            modelBuilder.Entity("Charity.Models.DataModels.CharityTag", b =>
+                {
+                    b.HasOne("Charity.Models.DataModels.Charity", "Charity")
+                        .WithMany("Tags")
+                        .HasForeignKey("CharityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Charity.Models.DataModels.Payment", b =>
+                {
+                    b.HasOne("Charity.Models.DataModels.Charity", "Charity")
+                        .WithMany()
+                        .HasForeignKey("CharityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Charity.Models.DataModels.UserModels.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Charity.Models.DataModels.UserModels.UserClaim", b =>

@@ -8,7 +8,7 @@ namespace Charity.Models.ViewModels.User
         {
         }
 
-        public MinimumUserInfo(int id, string userName, string fullName, string avatar, DateTimeOffset? loginDateTime)
+        public MinimumUserInfo(int id, string userName, string fullName, string avatar, DateTime? loginDateTime)
             : this()
         {
             this.Id = id;
@@ -36,6 +36,6 @@ namespace Charity.Models.ViewModels.User
 
         public string Avatar { get; set; }
 
-        public DateTimeOffset? LoginDateTime { get; set; }
+        public DateTime? LoginDateTime { get; set; }
     }
 }

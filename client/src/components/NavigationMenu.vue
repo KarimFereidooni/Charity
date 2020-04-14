@@ -20,9 +20,16 @@
         </v-list-item>
       </template>
       <template v-if="userIsCharity">
+        <v-list-item to="/payments" exact>
+          <v-list-item-action>
+            <v-icon>$vuetify.icons.dollar</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title v-text="'پرداختی ها'" />
+          </v-list-item-content>
+        </v-list-item>
       </template>
-      <template v-if="userIsUser">
-      </template>
+      <template v-if="userIsUser"> </template>
     </template>
     <v-divider />
     <template v-for="(item, index) in appMenu">
@@ -90,7 +97,7 @@ export default Vue.extend({
     },
     userIsUser(): UserInfo {
       return this.$store.getters.userIsUser;
-    },
+    }
   }
 });
 </script>

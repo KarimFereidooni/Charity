@@ -9,7 +9,7 @@ namespace Charity.Models.ViewModels.User
         {
         }
 
-        public ProfileViewModel(int? id, bool isAuthenticated, string userName, string title, string name, string surname, string email, string phoneNumber, string avatar, string nationCode, string idNumber, string homePhoneNumber, string workPhoneNumber, string fax, string address, string postalCode, string bankAccountNumber, string bankName, string bankCard, string bankIBAN, string iDPayLink, string fullName, bool disabled, string chatId, DateTimeOffset? lastLoginDateTime, DateTimeOffset? loginDateTime, UserRoleViewModel[] roles, string token)
+        public ProfileViewModel(int? id, bool isAuthenticated, string userName, string title, string name, string surname, string email, string phoneNumber, string avatar, string nationCode, string idNumber, string homePhoneNumber, string workPhoneNumber, string fax, string address, string postalCode, string bankAccountNumber, string bankName, string bankCard, string bankIBAN, string iDPayLink, string fullName, bool disabled, string chatId, DateTime? lastLoginDateTime, DateTime? loginDateTime, UserRoleViewModel[] roles, string token)
             : this()
         {
             this.Id = id ?? -1;
@@ -129,9 +129,9 @@ namespace Charity.Models.ViewModels.User
 
         public string Token { get; set; }
 
-        public DateTimeOffset? LastLoginDateTime { get; set; }
+        public DateTime? LastLoginDateTime { get; set; }
 
-        public DateTimeOffset? LoginDateTime { get; set; }
+        public DateTime? LoginDateTime { get; set; }
 
         public UserRoleViewModel[] Roles { get; set; }
     }

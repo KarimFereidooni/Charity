@@ -22,6 +22,12 @@ namespace Charity.Data
              .AddInterceptors(new Extensions.HintCommandInterceptor());
         }
 
+        public virtual DbSet<Models.DataModels.Charity> Charities { get; set; }
+
+        public virtual DbSet<Models.DataModels.CharityTag> CharityTags { get; set; }
+
+        public virtual DbSet<Models.DataModels.Payment> Payments { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
