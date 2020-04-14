@@ -1,0 +1,88 @@
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.cs]
+indent_size = 4
+
+dotnet_diagnostic.SA0001.severity = none
+
+# S125: Sections of code should not be commented out
+dotnet_diagnostic.S125.severity = none
+
+# S112: General exceptions should never be thrown
+dotnet_diagnostic.S112.severity = none
+
+# S2971: "IEnumerable" LINQs should be simplified
+dotnet_diagnostic.S2971.severity = none
+
+# S1135: Track uses of "TODO" tags
+dotnet_diagnostic.S1135.severity = none
+
+# S1125: Boolean literals should not be redundant
+dotnet_diagnostic.S1125.severity = none
+
+# S927: parameter names should match base declaration and other partial definitions
+dotnet_diagnostic.S927.severity = none
+
+# SA1512: Single-line comments should not be followed by blank line
+dotnet_diagnostic.SA1512.severity = none
+
+# S1075: URIs should not be hardcoded
+dotnet_diagnostic.S1075.severity = none
+
+# SA1122: Use string.Empty for empty strings
+dotnet_diagnostic.SA1122.severity = none
+
+# SA1633: File should have header
+dotnet_diagnostic.SA1633.severity = none
+
+# SA1600: Elements should be documented
+dotnet_diagnostic.SA1600.severity = none
+
+# SA1200: Using directives should be placed correctly
+dotnet_diagnostic.SA1200.severity = none
+
+# SA1210: Using directives should be ordered alphabetically by namespace
+dotnet_diagnostic.SA1210.severity = none
+
+# SA1208: System using directives should be placed before other using directives
+dotnet_diagnostic.SA1208.severity = none
+
+# SA1515: Single-line comment should be preceded by blank line
+dotnet_diagnostic.SA1515.severity = none
+
+# SA1402: File may only contain a single type
+dotnet_diagnostic.SA1402.severity = none
+
+# SA1201: Elements should appear in the correct order
+dotnet_diagnostic.SA1201.severity = none
+
+# SA1203: Constants should appear before fields
+dotnet_diagnostic.SA1203.severity = none
+
+# SA1204: Static elements should appear before instance elements
+dotnet_diagnostic.SA1204.severity = none
+
+# SA1623: Property summary documentation should match accessors
+dotnet_diagnostic.SA1623.severity = none
+
+# SA1601: Partial elements should be documented
+dotnet_diagnostic.SA1601.severity = none
+
+# S1185: Overriding members should do more than simply call the same member in the base class
+dotnet_diagnostic.S1185.severity = none
+
+# SA1649: File name should match first type name
+dotnet_diagnostic.SA1649.severity = none
+
+# SA1413: Use trailing comma in multi-line initializers
+dotnet_diagnostic.SA1413.severity = none
+
+[*.{js,json,vue}]
+indent_size = 2

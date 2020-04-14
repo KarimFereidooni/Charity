@@ -1,0 +1,125 @@
+body {
+  font-family: "Vazir-FD", sans-serif;
+}
+.switcher {
+  right: -170px;
+  left: unset;
+}
+.switcher .cog {
+  left: -40px;
+  right: unset;
+}
+.switcher.active {
+  right: 0;
+  left: unset;
+}
+
+/* .navbar-default .navbar-nav {
+  float: left !important;
+} */
+
+/* .navbar-default .navbar-nav > li {margin-left: 2px;} */
+
+/* .navbar-default .navbar-nav > li:last-child {
+  margin-left: 0;
+} */
+
+#hero .box .download i,
+#hero .box .video i,
+.about .content .download i,
+.download-section .box a i {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+#hero .box .btn {
+  margin: 0 0 20px 20px;
+}
+
+.one-feature .content .more i {
+  margin-right: 5px;
+  margin-left: 0;
+}
+
+.one-feature .content .more:hover i {
+  margin-right: 8px;
+  margin-left: 0;
+}
+
+.owl-dots .owl-dot {
+  margin-left: 20px;
+  margin-right: 0;
+}
+.owl-dots .owl-dot:last-child {
+  margin-left: 0;
+}
+
+.team .box .overlay .content .icons a {
+  margin-left: 6px;
+  margin-right: 0;
+}
+.team .box .overlay .content .icons a:last-child {
+  margin-left: 0;
+}
+
+.blog .box .content .info span i,
+.blog .box .content .info time i {
+  margin-left: 10px;
+  margin-right: 0;
+}
+.blog .box .content .info span:last-child {
+  margin-left: 0;
+}
+
+.blog .box .content .read i {
+  margin-right: 3px;
+  margin-left: 0;
+}
+.blog .box .content .read:hover i {
+  margin-right: 5px;
+  margin-left: 0;
+}
+
+.faq .panel .panel-heading .panel-title a:after {
+  float: left;
+}
+
+.contact .box .item i {
+  float: right;
+}
+
+.contact .info-box .icons a {
+  margin-left: 6px;
+  margin-right: 0;
+}
+.contact .info-box .icons a:last-child {
+  margin-left: 0;
+}
+
+.subscribe form .subscribe-btn {
+  left: -1px;
+  border-radius: 22px 0 0 22px;
+}
+
+.testimonials .box ul li {
+  margin-left: 10px;
+  margin-right: 0;
+}
+.testimonials .box ul li:last-child {
+  margin-left: 0;
+}
+
+.blog .box .content .info span,
+.blog .box .content .info time {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav {
+    float: right !important;
+  }
+  #hero .box .btn {
+    margin: 0 0 20px 20px;
+  }
+}

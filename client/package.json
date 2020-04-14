@@ -1,0 +1,87 @@
+{
+  "name": "charity",
+  "description": "Translation Auctions",
+  "version": "1.10.11.14",
+  "private": true,
+  "author": {
+    "name": "karim fereidooni",
+    "email": "kf.worknet@gmail.com",
+    "url": "http://k-developer.ir"
+  },
+  "scripts": {
+    "start": "cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet run --project ../server/Charity.csproj",
+    "start-watch": "cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet watch run --project ../server/Charity.csproj",
+    "clean": "rimraf ../server/bin/Release/* && rimraf ../server/wwwroot/dist/*",
+    "publish": "yarn run clean && dotnet publish ../server/Charity.csproj -c Release -r win-x64",
+    "deploy": "yarn run clean && dotnet publish ../server/Charity.csproj /p:PublishProfile=DeployProfile",
+    "serve": "vue-cli-service serve",
+    "lint": "vue-cli-service lint",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.10.2",
+    "@fortawesome/fontawesome-svg-core": "^1.2.22",
+    "@fortawesome/free-brands-svg-icons": "^5.10.2",
+    "@fortawesome/free-regular-svg-icons": "^5.10.2",
+    "@fortawesome/free-solid-svg-icons": "^5.10.2",
+    "@fortawesome/vue-fontawesome": "^0.1.6",
+    "@mdi/font": "^4.4.95",
+    "@mdi/js": "^4.4.95",
+    "@microsoft/signalr": "^3.0.0",
+    "axios": "^0.19.0",
+    "babel-polyfill": "^6.26.0",
+    "core-js": "^2.6.5",
+    "cropperjs": "^1.5.5",
+    "final-form": "^4.18.5",
+    "linq": "^3.2.1",
+    "moment": "^2.24.0",
+    "moment-jalaali": "^0.9.1",
+    "nano-assign": "^1.0.1",
+    "query-string": "^6.8.3",
+    "register-service-worker": "^1.6.2",
+    "sweetalert": "^2.1.2",
+    "vue": "^2.6.11",
+    "vue-fragment": "^1.5.1",
+    "vue-infinite-loading": "^2.4.5",
+    "vue-infinite-scroll": "^2.0.2",
+    "vue-loading-overlay": "^3.2.0",
+    "vue-moment-jalaali": "^2.0.0",
+    "vue-router": "^3.1.3",
+    "vue-swal": "^1.0.0",
+    "vuetify": "^2.2.18",
+    "vuex": "^3.1.1",
+    "vuex-router-sync": "^5.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.12.0",
+    "@vue/cli-plugin-pwa": "^3.12.0",
+    "@vue/cli-plugin-typescript": "^3.12.0",
+    "@vue/cli-service": "^3.12.0",
+    "aspnet-prerendering": "^3.0.1",
+    "cross-env": "^5.2.0",
+    "lint-staged": "^9.2.3",
+    "lodash.merge": "^4.6.2",
+    "rimraf": "^3.0.0",
+    "sass": "^1.22.10",
+    "sass-loader": "^7.3.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.6.3",
+    "vue-server-renderer": "^2.6.11",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  }
+}

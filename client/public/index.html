@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="author" content="kf.worknet@gmail.com" />
+    <title>خیریه</title>
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+    <style id="app-loader-style">
+      .app-loader {
+        z-index: 999;
+        font-family: IRANSans, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        color: #2b4347;
+        background-color: #fafafa;
+      }
+
+      .app-loader-animation {
+        position: absolute;
+        top: calc(50% - 164px);
+        left: calc(50% - 32px);
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        perspective: 800px;
+      }
+
+      .app-loader-animation > .app-loader-animation-inner {
+        position: absolute;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+
+      .app-loader-animation > .app-loader-animation-inner.animation-one {
+        left: 0%;
+        top: 0%;
+        animation: rotate-one 1s linear infinite;
+        border-bottom: 3px solid #2b4347;
+      }
+
+      .app-loader-animation > .app-loader-animation-inner.animation-two {
+        right: 0%;
+        top: 0%;
+        animation: rotate-two 1s linear infinite;
+        border-right: 3px solid #2b4347;
+      }
+
+      .app-loader-animation > .app-loader-animation-inner.animation-three {
+        right: 0%;
+        bottom: 0%;
+        animation: rotate-three 1s linear infinite;
+        border-top: 3px solid #2b4347;
+      }
+
+      .app-loading-text {
+        text-align: center;
+        font-size: 14px;
+        position: absolute;
+        top: calc(50% - 70px);
+        left: calc(50% - 100px);
+        width: 200px;
+        height: 64px;
+        margin: 0;
+        padding: 0;
+      }
+
+      @keyframes rotate-one {
+        0% {
+          transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+        }
+
+        100% {
+          transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+        }
+      }
+
+      @keyframes rotate-two {
+        0% {
+          transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+        }
+
+        100% {
+          transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+        }
+      }
+
+      @keyframes rotate-three {
+        0% {
+          transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+        }
+
+        100% {
+          transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body dir="rtl">
+    <noscript>
+      <strong>
+        متأسفیم اما خیریه به درستی کار نمی کند بدون اینکه جاوا اسکریپت را فعال کنید. لطفاً ابتدا جاوا اسکریپت را فعال کنید.
+      </strong>
+    </noscript>
+    <div class="app-loader">
+      <div class="app-loader-animation">
+        <div class="app-loader-animation-inner animation-one"></div>
+        <div class="app-loader-animation-inner animation-two"></div>
+        <div class="app-loader-animation-inner animation-three"></div>
+      </div>
+      <span class="app-loading-text">در حال بارگذاری ...</span>
+    </div>
+    <div id="Charity-app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
