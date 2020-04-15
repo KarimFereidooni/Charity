@@ -5,7 +5,7 @@ Download the latest release : https://github.com/KarimFereidooni/Charity/release
 
 Unzip files and run *Charity.exe*
 
-Open "http://localhost:5000" in web browser.
+Open "http://localhost:5000" in a web browser.
 
 
 # Users
